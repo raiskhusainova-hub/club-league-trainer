@@ -67,24 +67,45 @@ svg {
 }
 .site-header {
   height: 88px;
-  max-width: 1248px;
+  max-width: 1120px;
   margin: auto;
   display: flex;
   align-items: center;
-  padding: 0 40px;
+  padding: 0 30px;
   gap: 26px;
   border-bottom: 1px solid #252932
 }
 .brand {
   display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--accent);
   font-size: 23px;
   font-weight: 800;
   letter-spacing: -.7px;
+  transition: color .18s
+}
+.brand-label {
   text-decoration: underline;
   text-underline-offset: 5px;
-  text-decoration-thickness: 1px;
-  transition: color .18s
+  text-decoration-thickness: 1px
+}
+.telegram-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  border: 1px solid #a6c8ec45;
+  background: linear-gradient(145deg,#a6c8ec24,#82afff0a);
+  color: #bddcfa;
+  box-shadow: inset 0 1px 0 #ffffff0b
+}
+.telegram-mark svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 1.6
 }
 .brand:hover {
   color: var(--text)
@@ -1068,7 +1089,7 @@ kbd: nth-child(2) {
   }
 }
 @media(min-width:1150px) {
-  main {
+  .site-header,main {
     max-width: 1100px
   }
   .game-layout {
@@ -1209,7 +1230,7 @@ kbd: nth-child(2) {
 @media(max-width:650px) {
   .site-header {
     height: 69px;
-    padding: 0 20px;
+    padding: 0 17px;
     gap: 17px
   }
   .brand {
