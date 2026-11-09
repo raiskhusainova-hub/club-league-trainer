@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101217">
+  <meta name="description" content="Тренажёр клубной лиги Аватарии. Ищи пять ключей, используй подсказки и учись обходить бомбы на поле 4 × 4.">
+  <title>Клубная лига · c1dance</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-key" viewBox="0 0 48 48"><path d="m24 26-14 14H5v-6l4-4h5v-5l5-5"/><circle cx="30" cy="17" r="12"/><circle cx="33" cy="14" r="3"/></symbol>
+    <symbol id="i-bomb" viewBox="0 0 48 48"><circle cx="22" cy="29" r="14"/><path d="m29 16 4-7 5 3-4 7M35 9l2-4m3 7 5 1m-3-7 3-3M14 27a8 8 0 0 1 5-5"/></symbol>
+    <symbol id="i-vault" viewBox="0 0 48 48"><rect x="6" y="7" width="36" height="34" rx="6"/><path d="M12 7v34M38 15h4m-4 18h4"/><circle cx="26" cy="24" r="7"/><path d="M26 14v20m-10-10h20m-17-7 14 14m-14 0 14-14"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 .5c0 1.5-2.5 1.5-2.5 3.5m0 3v.2"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8a8 8 0 1 0 0 8M20 3v5h-5"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 48 48"><path d="M14 8h20v12a10 10 0 0 1-20 0V8Zm10 22v10m-8 1h16M14 12H7v5a8 8 0 0 0 9 8m18-13h7v5a8 8 0 0 1-9 8"/><path d="m24 12 2 4 4 .5-3 3 .8 4-3.8-2-3.8 2 .8-4-3-3 4-.5Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  </defs></svg>
+
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="c1dance, главная"><span class="brand-mark">c<span>1</span></span><span>c1dance<span class="brand-dot">.</span></span></a>
+    <span class="header-divider"></span><span class="header-caption">ИГРОВАЯ ПРАКТИКА</span>
+    <button class="quiet-button rules-trigger" type="button"><svg><use href="#i-help"/></svg><span>Как играть</span></button>
+  </header>
+
+  <main>
+    <div class="page-heading"><div><p class="eyebrow"><span></span> ТРЕНАЖЁР АВАТАРИИ</p><h1>Клубная лига</h1><p class="intro">Пять ключей. Шестнадцать сейфов. Твой следующий ход.</p></div><div class="practice-badge"><span></span> Свободная тренировка</div></div>
+
+    <div class="game-layout">
+      <section class="arena" aria-label="Игровое поле">
+        <div class="arena-top"><div class="round-label"><span class="round-dot"></span><span id="round-label">Раунд 01</span></div><span class="time"><svg><use href="#i-clock"/></svg><span id="timer">00:00</span></span></div>
+        <div class="meters">
+          <div class="strength-stat"><div class="stat-line"><span><svg><use href="#i-shield"/></svg> Прочность</span><strong><span id="strength">100</span><small> / 100</small></strong></div><div class="strength-track" role="progressbar" aria-label="Прочность снаряжения" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="strength-fill"></span></div></div>
+          <div class="key-stat"><span class="key-stat-icon"><svg><use href="#i-key"/></svg></span><div><span>Найдено ключей</span><strong><span id="key-count">0</span><small> / 5</small></strong></div></div>
+        </div>
+
+        <div class="mode-row"><div class="mode-switch" role="group" aria-label="Действие при нажатии на сейф"><button id="mode-open" class="mode-button selected" type="button" aria-pressed="true"><svg><use href="#i-vault"/></svg>Открыть<span>−5</span></button><button id="mode-hint" class="mode-button" type="button" aria-pressed="false"><svg><use href="#i-eye"/></svg>Подсказка<span>−6</span></button></div><span class="mode-note" id="mode-note">Выбери сейф</span></div>
+
+        <div class="board-wrap"><div id="board" class="board" aria-label="16 сейфов, четыре ряда по четыре"></div><div id="result-panel" class="result-panel" hidden><div class="result-dialog" role="dialog" aria-modal="true" aria-labelledby="result-title" tabindex="-1"><div class="result-emblem"><svg><use href="#i-trophy"/></svg></div><p class="eyebrow" id="result-eyebrow">ОТЛИЧНАЯ ИГРА</p><h2 id="result-title">Кубок твой!</h2><p id="result-description"></p><button class="primary-button next-game" type="button">Ещё один раунд<svg><use href="#i-arrow"/></svg></button><button class="text-button" id="inspect-board" type="button">Посмотреть поле</button></div></div></div>
+        <div class="board-message" id="board-message" role="status" aria-live="polite"><span class="message-dot"></span><span id="message-text">Начни с подсказки или открой первый сейф.</span></div>
+        <div class="arena-footer"><span><kbd>1</kbd> открыть <kbd>2</kbd> подсказка</span><button id="restart" class="quiet-button" type="button"><svg><use href="#i-refresh"/></svg>Новая игра</button></div>
+      </section>
+
+      <aside class="sidebar">
+        <section class="side-card collection-card"><div class="side-title"><h2>Твоя цель</h2><span>5 ключей</span></div><p class="muted">Собери комплект, чтобы забрать кубок.</p><div id="key-collection" class="key-collection"></div><div class="collection-legend"><span><i class="blue-dot"></i>2 синих</span><span><i class="red-dot"></i>2 красных</span><span><i class="gold-dot"></i>1 золотой</span></div></section>
+        <section class="side-card rule-card"><div class="tip-icon"><svg><use href="#i-help"/></svg></div><h2>Соседство решает</h2><p>Рядом с ключом или бомбой <strong>нет предметов того же цвета</strong>. Проверяй и диагонали.</p><div class="neighbor-example" aria-hidden="true"><span></span><span></span><span></span><span></span><span class="center"><svg><use href="#i-key"/></svg></span><span></span><span></span><span></span><span></span></div><button class="text-button rules-trigger" type="button">Все правила<svg><use href="#i-arrow"/></svg></button></section>
+        <section class="side-card journal-card"><div class="side-title"><h2>Ходы</h2><span id="turn-count">0</span></div><div id="journal" class="journal"><div class="journal-empty"><svg><use href="#i-vault"/></svg><p>Здесь появится<br>история твоих решений</p></div></div></section>
+        <p class="offline-note"><span></span> Прогресс тренировки сохраняется<br>в этом браузере</p>
+      </aside>
+    </div>
+
+    <footer class="site-footer"><span>c1dance · Играй осознанно</span><span id="session-stats">Твоя первая тренировка</span></footer>
+  </main>
+
+  <dialog id="rules-dialog" class="modal"><button class="close-dialog icon-button" aria-label="Закрыть правила"><svg><use href="#i-x"/></svg></button><p class="eyebrow">ПЕРЕД ПЕРВЫМ ХОДОМ</p><h2>Как устроена лига</h2><p>Найди и открой все пять ключей, пока хватает прочности снаряжения.</p><div class="rule-costs"><div><svg><use href="#i-vault"/></svg><strong>5</strong><span>открыть сейф</span></div><div><svg><use href="#i-eye"/></svg><strong>6</strong><span>подсмотреть</span></div><div><svg><use href="#i-bomb"/></svg><strong>+20</strong><span>за бомбу</span></div></div><ul><li>В каждом раунде <strong>16 сейфов</strong> и <strong>100 прочности</strong>.</li><li>Внутри 5 ключей, 5 бомб и 6 пустых сейфов. Среди ключей и бомб по 2 синих, 2 красных и 1 золотому.</li><li>В восьми соседних клетках, включая диагонали, нет ключей и бомб <strong>того же цвета</strong>.</li><li>Подсказка раскрывает содержимое, но ключ нужно затем открыть. Подсказка на бомбу безопасна.</li><li>Открытый пустой сейф стоит 5 прочности. Открытая бомба стоит 25.</li><li>При остатке меньше 5 прочности и несобранных ключах раунд заканчивается поражением. Пятый открытый ключ приносит победу.</li></ul><p class="rules-footnote">Тренировка повторяет поле и расходы клубной арены. Вход свободный, игровые ресурсы не расходуются.</p><button class="primary-button close-dialog" type="button">Понятно, играем<svg><use href="#i-arrow"/></svg></button></dialog>
+  <dialog id="restart-dialog" class="modal compact-modal"><p class="eyebrow">НОВЫЙ РАУНД</p><h2>Начать заново?</h2><p>Текущее поле будет заменено новой случайной раскладкой.</p><div class="dialog-actions"><button class="quiet-button" id="cancel-restart" type="button">Продолжить раунд</button><button class="primary-button" id="confirm-restart" type="button">Новая игра<svg><use href="#i-refresh"/></svg></button></div></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
