@@ -76,48 +76,18 @@ svg {
   border-bottom: 1px solid #252932
 }
 .brand {
-  display: flex;
-  gap: 12px;
-  align-items: center;
+  display: inline-flex;
+  color: var(--accent);
   font-size: 23px;
   font-weight: 800;
-  letter-spacing: -1.2px
+  letter-spacing: -.7px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  transition: color .18s
 }
-.brand-dot {
-  color: var(--accent)
-}
-.brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border: 1px solid #7894b3;
-  border-radius: 8px 8px 13px 13px;
-  color: var(--accent);
-  height: 31px;
-  width: 29px;
-  font-size: 23px;
-  font-weight: 500;
-  letter-spacing: -4px;
-  padding-right: 6px;
-  line-height: 1
-}
-.brand-mark span {
-  font-size: 17px;
-  position: relative;
-  left: 1px;
-  top: 1px
-}
-.header-divider {
-  height: 20px;
-  width: 1px;
-  background: var(--line)
-}
-.header-caption {
-  font-size: 10px;
-  font-weight: 650;
-  letter-spacing: 2px;
-  color: var(--muted)
+.brand:hover {
+  color: var(--text)
 }
 .site-header>.quiet-button {
   margin-left: auto
@@ -144,13 +114,13 @@ svg {
 main {
   max-width: 1120px;
   margin: auto;
-  padding: 43px 30px 0
+  padding: 24px 30px 30px
 }
 .page-heading {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 28px
+  justify-content: flex-end;
+  margin-bottom: 16px
 }
 .eyebrow {
   font-size: 10px;
@@ -190,7 +160,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 30px;
   padding: 7px 11px;
-  margin-top: 5px
+  margin-top: 0
 }
 .practice-badge>span {
   width: 5px;
@@ -868,33 +838,6 @@ kbd: nth-child(2) {
   font-variant-numeric: tabular-nums;
   color: #abb5c5
 }
-.offline-note {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 6px;
-  text-align: center;
-  font-size: 9px;
-  line-height: 1.9;
-  color: #637086;
-  margin: 0
-}
-.offline-note>span {
-  display: block;
-  width: 4px;
-  height: 4px;
-  background: #748b81;
-  border-radius: 50%
-}
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 26px 0 27px;
-  font-size: 9px;
-  letter-spacing: .2px;
-  color: #636d7d;
-  gap: 15px
-}
 .result-panel {
   position: absolute;
   inset: -2px;
@@ -1027,12 +970,6 @@ kbd: nth-child(2) {
 .modal strong {
   color: #dce6f3;
   font-weight: 650
-}
-.modal .rules-footnote {
-  font-size: 10px!important;
-  color: #7c8ba1!important;
-  border-top: 1px solid var(--line);
-  padding-top: 15px
 }
 .modal>.primary-button {
   width: 100%
@@ -1168,7 +1105,7 @@ kbd: nth-child(2) {
     height: 73px
   }
   main {
-    padding: 30px 24px 0
+    padding: 30px 24px 28px
   }
   .game-layout {
     grid-template-columns: minmax(0,1fr) 235px;
@@ -1237,7 +1174,7 @@ kbd: nth-child(2) {
   .arena-footer .quiet-button {
     font-size: 9px
   }
-  .practice-badge {
+  .page-heading {
     display: none
   }
   .rule-card p {
@@ -1276,32 +1213,14 @@ kbd: nth-child(2) {
     gap: 17px
   }
   .brand {
-    font-size: 21px;
-    gap: 10px
-  }
-  .brand-mark {
-    width: 25px;
-    height: 28px;
     font-size: 21px
-  }
-  .brand-mark span {
-    font-size: 15px
-  }
-  .header-caption {
-    display: none
-  }
-  .header-divider {
-    display: none
   }
   .site-header>.quiet-button {
     font-size: 11px;
     gap: 6px
   }
   main {
-    padding: 27px 17px 0
-  }
-  .page-heading {
-    margin-bottom: 22px
+    padding: 27px 17px 28px
   }
   .eyebrow {
     font-size: 8px;
@@ -1507,19 +1426,6 @@ kbd: nth-child(2) {
   }
   .journal-empty p {
     font-size: 9px
-  }
-  .offline-note {
-    grid-column: 1/-1;
-    font-size: 8px;
-    margin-top: 2px
-  }
-  .site-footer {
-    font-size: 8px;
-    padding-top: 21px;
-    align-items: flex-start
-  }
-  .site-footer>span:last-child {
-    text-align: right
   }
   .result-panel {
     padding: 13px

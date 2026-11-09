@@ -59,7 +59,7 @@ function setMode(next) {
   $('#mode-hint').classList.toggle('selected', mode === 'hint');
   $('#mode-open').setAttribute('aria-pressed', String(mode === 'open'));
   $('#mode-hint').setAttribute('aria-pressed', String(mode === 'hint'));
-  $('#mode-note').textContent = mode === 'open' ? 'Выбери сейф' : 'Покажи содержимое';
+  $('#mode-note').textContent = mode === 'open' ? 'Выбери сейф' : 'Посмотреть содержимое';
   renderBoard();
 }
 function renderBoard() {
@@ -131,7 +131,6 @@ function render() {
   $('.strength-track').setAttribute('aria-valuenow', String(game.strength));
   $('.strength-track').classList.toggle('low', game.strength <= 25);
   $('#timer').textContent = timeText(elapsed());
-  $('#session-stats').textContent = stats.games ? `Завершено ${stats.games} · Побед ${stats.wins} · ${Math.round(stats.wins / stats.games * 100)}%` : 'Твоя первая тренировка';
   renderBoard(); renderCollection(); renderJournal(); renderResult();
   message(lastMessage, messageType);
 }
